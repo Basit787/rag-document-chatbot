@@ -1,0 +1,126 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [4 0 R 6 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 5 0 R >>
+endobj
+5 0 obj
+<< /Length 977 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+56 780 Td
+/F1 16 Tf
+(Project Halcyon - Q3 2026 Status Report) Tj
+/F1 11 Tf
+T*
+T*
+(Fictional report, made up for testing the RAG Document Chatbot.) Tj
+T*
+() Tj
+T*
+(1. Summary) Tj
+T*
+(Project Halcyon builds a delivery-route planner for the city of Port Verane.) Tj
+T*
+(Q3 ended with 82% of planned features done \(target was 75%\).) Tj
+T*
+(Total spend in Q3: EUR 418,000 against a budget of EUR 450,000.) Tj
+T*
+(The public beta launched on 14 September 2026 with 1,240 drivers.) Tj
+T*
+() Tj
+T*
+(2. Team) Tj
+T*
+(Project lead: Dana Whitfield. Tech lead: Ravi Anand.) Tj
+T*
+(Design: Lucia Moreno. QA: Tomas Berg.) Tj
+T*
+(The team grew from 9 to 11 people in August.) Tj
+T*
+() Tj
+T*
+(3. Key results) Tj
+T*
+(- Average route time dropped from 47 minutes to 39 minutes \(-17%\).) Tj
+T*
+(- Fuel use per delivery fell by 12% in the beta group.) Tj
+T*
+(- App crash rate: 0.4% of sessions \(goal: below 0.5%\).) Tj
+T*
+(- Driver satisfaction score: 4.3 out of 5.) Tj
+T*
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 897 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+56 780 Td
+(4. Risks) Tj
+T*
+(R1: The traffic data vendor contract ends on 31 December 2026.) Tj
+T*
+(    Mitigation: tender for a second vendor opens in October.) Tj
+T*
+(R2: Offline maps are 3 weeks late because of a licensing review.) Tj
+T*
+(R3: Only one engineer knows the routing engine \(bus factor of 1\).) Tj
+T*
+(    Mitigation: pair-programming rotation started on 2 October.) Tj
+T*
+() Tj
+T*
+(5. Plan for Q4 2026) Tj
+T*
+(- Release version 1.0 to all 5,000 city drivers on 30 November.) Tj
+T*
+(- Ship offline maps and an Android tablet layout.) Tj
+T*
+(- Hire one more backend engineer.) Tj
+T*
+(- Q4 budget: EUR 390,000.) Tj
+T*
+() Tj
+T*
+(6. Decisions needed) Tj
+T*
+(The steering committee must choose between Vendor A \(cheaper, EUR 6,000) Tj
+T*
+(per month\) and Vendor B \(better coverage, EUR 9,500 per month\) by 20 October.) Tj
+T*
+(The team recommends Vendor B.) Tj
+T*
+ET
+endstream
+endobj
+xref
+0 8
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000218 00000 n 
+0000000344 00000 n 
+0000001372 00000 n 
+0000001498 00000 n 
+trailer
+<< /Size 8 /Root 1 0 R >>
+startxref
+2446
+%%EOF

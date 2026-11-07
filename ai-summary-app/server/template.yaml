@@ -1,0 +1,64 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Description: AI Summary FastAPI Server
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 30
+    MemorySize: 512
+
+Resources:
+  UploadBucket:
+    Type: AWS::S3::Bucket
+
+  AiSummaryAppServer:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: app.main.handler
+      Architectures:
+        - x86_64
+
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref UploadBucket
+
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref UploadBucket
+
+      Events:
+        Root:
+          Type: HttpApi
+          Properties:
+            Path: /
+            Method: ANY
+
+        Proxy:
+          Type: HttpApi
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
+
+  SummaryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: app.s3_handler.lambda_handler
+      Architectures:
+        - x86_64
+
+      Environment:
+        Variables:
+          BUCKET_NAME: !Ref UploadBucket
+
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref UploadBucket
+
+Outputs:
+  ApiEndpoint:
+    Description: API Gateway endpoint
+    Value: !Sub "https://${ServerlessHttpApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/"

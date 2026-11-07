@@ -1,0 +1,22 @@
+import tailwindcss from '@tailwindcss/vite';
+
+import { tanstackRouter } from '@tanstack/router-plugin/vite';
+
+import viteReact from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
+
+const config = defineConfig({
+  resolve: { tsconfigPaths: true },
+  plugins: [
+    tailwindcss(),
+    tanstackRouter({ target: 'react', autoCodeSplitting: true }),
+    viteReact(),
+  ],
+  server: {
+    proxy: {
+      '/api': process.env.API_URL ?? 'http://localhost:3001',
+    },
+  },
+});
+
+export default config;

@@ -1,26 +1,32 @@
-FROM node:20-alpine AS base
-WORKDIR /app
-RUN apk add --no-cache libc6-compat openssl
-
-FROM base AS deps
-COPY package.json package-lock.json* ./
-RUN npm install
-
-FROM base AS builder
-COPY --from=deps /app/node_modules ./node_modules
-COPY . .
-RUN npx prisma generate
-RUN npm run build
-
-FROM base AS runner
-ENV NODE_ENV=production
-WORKDIR /app
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/src/db/prisma ./src/db/prisma
-COPY --from=builder /app/node_modules/.prisma ./node_modules/.prisma
-EXPOSE 3002
-ENV PORT=3002
-ENV HOSTNAME=0.0.0.0
-CMD ["sh", "-c", "npx prisma migrate deploy && node server.js"]
+# Shared base: Node + pnpm
+FROM node:24-alpine AS base
+RUN npm install -g pnpm@12.14.0
+WORKDIR /app
+
+# Server manifests + Prisma schema/migrations (needed by postinstall `prisma generate`)
+FROM base AS server-base
+COPY server/package.json server/pnpm-lock.yaml server/pnpm-workspace.yaml server/prisma.config.ts ./
+COPY server/prisma ./prisma
+
+# Build the NestJS server with all dependencies
+FROM server-base AS server-build
+RUN pnpm install --frozen-lockfile
+COPY server/ .
+RUN pnpm build
+
+# Server runtime: production deps + compiled dist; applies migrations, then starts
+FROM server-base AS server
+ENV NODE_ENV=production
+RUN pnpm install --frozen-lockfile --prod
+COPY --from=server-build /app/dist ./dist
+EXPOSE 3001
+CMD ["sh", "-c", "pnpm exec prisma migrate deploy && node dist/main.js"]
+
+# Client: build the Vite app and serve it with `vite preview` (proxies /api to the server)
+FROM base AS client
+COPY client/package.json client/pnpm-lock.yaml client/pnpm-workspace.yaml client/.npmrc ./
+RUN pnpm install --frozen-lockfile
+COPY client/ .
+RUN pnpm build
+EXPOSE 3000
+CMD ["pnpm", "preview", "--host", "0.0.0.0", "--port", "3000"]

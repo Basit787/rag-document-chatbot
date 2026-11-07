@@ -1,0 +1,61 @@
+SUNSPROUT S2 SMART PLANTER - USER MANUAL
+(Fictional product, made up for testing the RAG Document Chatbot.)
+
+1. WHAT IS IN THE BOX
+- SunSprout S2 base with 6 planting pods
+- LED grow-light arm (adjustable, 3 height positions)
+- 12 V power adapter
+- 6 seed capsules: basil, mint, parsley, cherry tomato, chili, lettuce
+- Nutrient bottle, 100 ml (lasts about 3 months)
+
+2. SPECIFICATIONS
+- Water tank: 4.2 litres
+- Light: 24 W full-spectrum LED, 3 brightness levels
+- Default light cycle: 16 hours on, 8 hours off
+- Weight: 2.1 kg (empty)
+- Connectivity: Wi-Fi 2.4 GHz only (5 GHz networks are not supported)
+- Warranty: 2 years on the base, 1 year on the LED arm
+
+3. FIRST SETUP
+Step 1. Fill the tank with room-temperature water up to the MAX line.
+Step 2. Add 10 ml of nutrient for a full tank.
+Step 3. Insert seed capsules and cover each with a germination dome.
+Step 4. Plug in the adapter. The status ring glows white while starting.
+Step 5. Open the SunSprout app and hold the leaf button for 5 seconds to pair.
+Remove the germination domes once sprouts touch them (usually day 7 to 10).
+
+4. STATUS RING COLOURS
+- White, steady: normal operation
+- Blue, pulsing: pairing mode
+- Yellow, steady: water level low (below 1 litre)
+- Orange, blinking: add nutrients (every 14 days)
+- Red, blinking: pump error - see section 6
+
+5. CARE
+- Top up water when the ring turns yellow; never fill above MAX.
+- Add 10 ml of nutrient every 14 days.
+- Clean the tank with warm water and a drop of vinegar every 2 months.
+- Prune herbs from the top so they grow bushier; do not remove more than one
+  third of a plant at once.
+- Cherry tomato and chili need the light arm in the highest position after
+  week 5.
+
+6. TROUBLESHOOTING
+Problem: red blinking ring.
+  Cause: pump blocked or tank empty. Fill the tank, then hold the leaf button
+  for 2 seconds to restart the pump. If it still blinks, unplug for 30 seconds.
+Problem: the planter will not pair.
+  Cause: usually a 5 GHz network. Connect your phone to a 2.4 GHz network and
+  retry. A factory reset is done by holding the leaf and light buttons together
+  for 10 seconds.
+Problem: seeds have not sprouted after 21 days.
+  Cause: old capsule or domes removed too early. Replacement capsules are free
+  within the first 3 months.
+Problem: leaves turn yellow.
+  Cause: too much nutrient. Empty the tank, rinse, refill with fresh water and
+  skip nutrients for one cycle.
+
+7. SUPPORT
+Email: support@sunsprout.example
+Phone: +1 555 0142 (Mon-Fri, 9:00-17:00)
+Serial number is on the sticker under the water tank.

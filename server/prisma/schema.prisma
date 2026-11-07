@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  threads      Thread[]
+  sessions     Session[]
+  documents    Document[]
+
+  @@map("users")
+}
+
+// One row per signed-in device; deleting it (logout) revokes that device's token.
+model Session {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  expiresAt DateTime @map("expires_at") @db.Timestamptz
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+}
+
+model Thread {
+  id        String   @id
+  userId    String   @map("user_id")
+  title     String
+  model     String
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, updatedAt])
+  @@map("threads")
+}
+
+// An uploaded file; its text is split into chunks that are embedded for retrieval.
+model Document {
+  id         String   @id @default(uuid())
+  userId     String   @map("user_id")
+  filename   String
+  size       Int
+  chunkCount Int      @map("chunk_count")
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  chunks     Chunk[]
+
+  @@index([userId, createdAt])
+  @@map("documents")
+}
+
+model Chunk {
+  id         String   @id @default(uuid())
+  documentId String   @map("document_id")
+  index      Int
+  content    String
+  embedding  Float[]
+  document   Document @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId])
+  @@map("chunks")
+}

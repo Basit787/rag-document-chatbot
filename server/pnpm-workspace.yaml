@@ -1,0 +1,7 @@
+allowBuilds:
+  "@prisma/engines": true
+  prisma: true
+  # Swagger UI's usage tracker; denied so it never runs.
+  "@scarf/scarf": false
+packages:
+  - .
